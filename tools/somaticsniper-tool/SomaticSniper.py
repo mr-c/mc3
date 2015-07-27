@@ -162,7 +162,7 @@ def sample_header_line(sample_id, uuid, barcode, individual, file_name, platform
 def vcfprocesslog_header_line(options):
     input_vcf = "InputVCF=<.>"  #no VCF is put into this program so empty
     source = "InputVCFSource=<bam-somaticsniper>"
-    version = "InputVCFVer=<1.0.4>" #Sniper version, could be different if exe specified differently. This should be done better.
+    version = "InputVCFVer=<1.0.5>" #Sniper version, could be different if exe specified differently. This should be done better.
     param = 'InputVCFParam=<"' + create_sniper_opts(options) + '">'
     anno = "InputVCFgeneAnno=<.>"
     return "##vcfProcessLog=<" + ",".join([input_vcf, source, version, param, anno]) + ">\n"
