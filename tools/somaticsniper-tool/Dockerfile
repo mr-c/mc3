@@ -4,6 +4,6 @@ RUN apt-get update && apt-get install -y wget build-essential git-core cmake zli
 RUN	pip install pysam
 
 WORKDIR /opt
-RUN wget https://github.com/genome/somatic-sniper/archive/v1.0.4.tar.gz && tar xvzf v1.0.4.tar.gz && rm v1.0.4.tar.gz
+RUN wget https://github.com/genome/somatic-sniper/archive/v1.0.5.0.tar.gz && tar xvzf v1.0.5.0.tar.gz && rm v1.0.5.0.tar.gz
 
-RUN cd /opt/somatic-sniper-1.0.4 && mkdir build && cd build && cmake ../ && make deps && make -j && make install
+RUN cd /opt/somatic-sniper-1.0.5 && mkdir build && cd build && cmake ../ && make deps && make -j && make install
