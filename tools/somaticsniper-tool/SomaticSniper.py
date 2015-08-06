@@ -133,9 +133,9 @@ def reheader_vcf(options, original_vcf_file, new_vcf_file):
     for line in original:
         if line.startswith("##"):
             if line.startswith("##FORMAT"):
-                outfile.write(fix_format_for_tcga(line))
+                outfile.write(fix_format_header_for_tcga(line))
         else:
-            outfile.write(line)
+            outfile.write(fix_mq(line))
     outfile.close()
 
 def sample_header_line(sample_id, uuid, barcode, individual, file_name, platform, accession, source):
@@ -159,7 +159,7 @@ def sample_header_line(sample_id, uuid, barcode, individual, file_name, platform
 
     return "##SAMPLE=<%s>\n" % ( ",".join( list( "%s=%s" % (k, v) for k,v in meta) ))
 
-def fix_format_for_tcga(line):
+def fix_format_header_for_tcga(line):
     fixLUT = { 'DP': '##FORMAT=<ID=DP,Number=1,Type=Integer,Description="Read depth at this position in the sample">',
                'DP4': '##FORMAT=<ID=DP4,Number=4,Type=Integer,Description="Number of high-quality ref-forward, ref-reverse, alt-forward and alt-reverse bases">',
                'GQ': '##FORMAT=<ID=GQ,Number=.,Type=Integer,Description="Conditional Phred-scaled genotype quality">',
@@ -172,6 +172,8 @@ def fix_format_for_tcga(line):
             return fixLUT[key] + '\n'
     return line
 
+def fix_mq(line):
+    return line.replace(':MQ:', ':GMQ:')
 
 def vcfprocesslog_header_line(options):
     input_vcf = "InputVCF=<.>"  #no VCF is put into this program so empty
