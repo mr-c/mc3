@@ -133,7 +133,7 @@ def reheader_vcf(options, original_vcf_file, new_vcf_file):
     for line in original:
         if line.startswith("##"):
             if line.startswith("##FORMAT"):
-                outfile.write(line)
+                outfile.write(fix_format_for_tcga(line))
         else:
             outfile.write(line)
     outfile.close()
@@ -157,7 +157,21 @@ def sample_header_line(sample_id, uuid, barcode, individual, file_name, platform
     if accession is not None:
         meta.append( ("Accession", accession) )
 
-    return "##SAMPLE=<%s>\n" % ( ",".join( list( "%s=%s" for k,v in meta) ))
+    return "##SAMPLE=<%s>\n" % ( ",".join( list( "%s=%s" % (k, v) for k,v in meta) ))
+
+def fix_format_for_tcga(line):
+    fixLUT = { 'DP': '##FORMAT=<ID=DP,Number=1,Type=Integer,Description="Read depth at this position in the sample">',
+               'DP4': '##FORMAT=<ID=DP4,Number=4,Type=Integer,Description="Number of high-quality ref-forward, ref-reverse, alt-forward and alt-reverse bases">',
+               'GQ': '##FORMAT=<ID=GQ,Number=.,Type=Integer,Description="Conditional Phred-scaled genotype quality">',
+               'BQ': '##FORMAT=<ID=BQ,Number=.,Type=Integer,Description="Average base quality for reads supporting alleles">',
+               'MQ': '##FORMAT=<ID=GMQ,Number=1,Type=Integer,Description="Average mapping quality across all reads">',
+               'SS': '##FORMAT=<ID=SS,Number=1,Type=Integer,Description="Variant status relative to non-adjacent Normal,0=wildtype,1=germline,2=somatic,3=LOH,4=post-transcriptional modification,5=unknown">',
+               }
+    for key in fixLUT:
+        if line.startswith('##FORMAT=<ID=' + key + ','):
+            return fixLUT[key] + '\n'
+    return line
+
 
 def vcfprocesslog_header_line(options):
     input_vcf = "InputVCF=<.>"  #no VCF is put into this program so empty
