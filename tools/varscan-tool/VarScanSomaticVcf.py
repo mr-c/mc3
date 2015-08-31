@@ -69,6 +69,10 @@ def reheader_vcf(options, original_vcf_file, new_vcf_file):
             if line.startswith("##FORMAT"):
                 outfile.write(fix_format_header_for_tcga(line))
             if line.startswith("#CHROM"):
+                # Hacked a bit below, but these will use our look up tables
+                # to add these to the header
+                outfile.write(add_format_header_for_tcga('BQ'))
+                outfile.write(add_format_header_for_tcga('SS'))
                 outfile.write(line)
         else:
             if re.search('SOMATIC', line):
@@ -76,10 +80,18 @@ def reheader_vcf(options, original_vcf_file, new_vcf_file):
     outfile.close()
     original.close()
 
+def add_format_header_for_tcga(key):
+    LUT = { 
+               'BQ': '##FORMAT=<ID=BQ,Number=.,Type=Integer,Description="Average base quality for reads supporting alleles">',
+               'SS': '##FORMAT=<ID=SS,Number=1,Type=Integer,Description="Variant status relative to non-adjacent Normal,0=wildtype,1=germline,2=somatic,3=LOH,4=post-transcriptional modification,5=unknown">',
+             }
+    return LUT[key] + '\n'
+
+
 def fix_info_header_for_tcga(line):
     """Move SS from INFO to FORMAT"""
     fixLUT = { 'DP': '##INFO=<ID=DP,Number=1,Type=Integer,Description="Total Depth across samples">',
-               'SS': '##FORMAT=<ID=SS,Number=1,Type=Integer,Description="Variant status relative to non-adjacent Normal,0=wildtype,1=germline,2=somatic,3=LOH,4=post-transcriptional modification,5=unknown">'
+               'SS': '##INFO=<ID=SS,Number=1,Type=Integer,Description="Variant status relative to non-adjacent Normal,0=wildtype,1=germline,2=somatic,3=LOH,4=post-transcriptional modification,5=unknown">'
              }
     for key in fixLUT:
         if line.startswith('##INFO=<ID=' + key + ','):
