@@ -73,6 +73,7 @@ def reheader_vcf(options, original_vcf_file, new_vcf_file):
                 # to add these to the header
                 outfile.write(add_format_header_for_tcga('BQ'))
                 outfile.write(add_format_header_for_tcga('SS'))
+                outfile.write(add_filter_header('str10')) #add in header for strand filter since VarScan doesn't itself
                 outfile.write(line)
         else:
             if re.search('SOMATIC', line):
@@ -87,6 +88,11 @@ def add_format_header_for_tcga(key):
              }
     return LUT[key] + '\n'
 
+def add_filter_header(key):
+    LUT = { 
+               'str10': '##FILTER=<ID=str10,Description="Fails VarScan Strand Filter">',
+             }
+    return LUT[key] + '\n'
 
 def fix_info_header_for_tcga(line):
     """Move SS from INFO to FORMAT"""
