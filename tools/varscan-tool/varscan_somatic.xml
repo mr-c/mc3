@@ -1,18 +1,14 @@
-<tool id="varscan_somatic_vcf" name="VarScan Somatic (VCF Output)" version="2.3.9">
+<tool id="varscan_somatic_vcf" name="VarScan Somatic (VCF Output)" version="2.4.0">
   <description>
     somatic mutation caller for cancer genomics
   </description>
   <requirements>
-    <container type="docker">varscan:2.3.9</container>
+    <container type="docker">varscan:2.4.0</container>
   </requirements>
 
-<command>
-java -Xmx7g -jar /opt/VarScan.jar
-somatic
+  <command interpreter="python">VarScanSomaticVcf.py
 $normal_pileup
 $tumor_pileup
-somatic_output
---output-vcf
 --min-coverage $min_coverage
 --min-coverage-normal $min_coverage_normal
 --min-coverage-tumor $min_coverage_tumor
@@ -23,10 +19,10 @@ somatic_output
 --p-value $p_value
 --somatic-p-value $somatic_p_value
 #if $strand_filter == "1":
---strand-filter 
+--strand-filter 1
 #end if
 #if $validation == "1":
---validation
+--validation 1
 #end if
 </command>
 
