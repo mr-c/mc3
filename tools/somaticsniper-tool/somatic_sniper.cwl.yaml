@@ -1,36 +1,31 @@
 class: CommandLineTool
 label: SomaticSniper
-baseCommand: [ /opt/bin/SomaticSniper.py, -F, vcf, --workdir, ./ ]
+baseCommand: [ /opt/SomaticSniper.py, -F, vcf, --workdir, ./ ]
 requirements:
   - class: "DockerRequirement"
     dockerPull: "somatic-sniper:1.0.5"
 inputs:
-  - id: "#tumor"
-    type: File
-  - id: "#normal"
-    type: File
-  - id: "#output_name"
-    type: string
-    default: "mutations.vcf"
   - id: "#reference"
     type: File
     inputBinding:
       prefix: -f
   - id: "#tumor_name"
     type: string
+    default: "TUMOR"
     inputBinding:
       prefix: -t
   - id: "#normal_name"
     type: string
+    default: "NORMAL"
     inputBinding:
       prefix: -n
   - id: "#mapq"
-    type: Integer
+    type: int
     inputBinding:
       prefix: -q
     default: 0
   - id: "#somaticq"
-    type: Integer
+    type: int
     inputBinding:
       prefix: -Q
     default: 15
@@ -56,9 +51,22 @@ inputs:
       prefix: "-J"
   - id: "prior_p"
     type: float
-    default: True
+    default: 0.01
     inputBinding:
       prefix: "-s"
+  - id: "#tumor"
+    type: File
+    inputBinding:
+      position: 1
+  - id: "#normal"
+    type: File
+    inputBinding:
+      position: 2
+  - id: "#output_name"
+    type: string
+    default: "mutations.vcf"
+    inputBinding:
+      position: 3
 
 outputs:
   - id: "#mutations"
