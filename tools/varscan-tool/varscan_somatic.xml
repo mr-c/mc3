@@ -1,9 +1,9 @@
-<tool id="varscan_somatic_vcf" name="VarScan Somatic (VCF Output)" version="2.4.0">
+<tool id="varscan_somatic_vcf" name="VarScan Somatic (VCF Output)" version="2.3.9">
   <description>
     somatic mutation caller for cancer genomics
   </description>
   <requirements>
-    <container type="docker">varscan:2.4.0</container>
+    <container type="docker">varscan:2.3.9</container>
   </requirements>
 
   <command interpreter="python">VarScanSomaticVcf.py
