@@ -3,7 +3,7 @@ label: VarScan Somatic
 baseCommand: ['python', '/opt/VarScanSomaticVcf.py']
 requirements:
   - class: "DockerRequirement"
-    dockerImageId: "varscan:2.3.9"
+    dockerImageId: "opengenomics/varscan:2.3.9"
 inputs:
   - id: "#normal_pileup"
     type: File
@@ -66,16 +66,11 @@ inputs:
     type: boolean
     inputBinding:
       prefix: --min-coverage
-      #if $strand_filter == "1":
-      --strand-filter 1
-      #end if
+
   - id: "#validation"
     type: boolean
     inputBinding:
       prefix: --min-coverage
-      #if $validation == "1":
-      --validation 1
-      #end if
       
 outputs:
   
