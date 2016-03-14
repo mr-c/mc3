@@ -3,7 +3,7 @@ label: SomaticSniper
 baseCommand: [ /opt/SomaticSniper.py, -F, vcf, --workdir, ./ ]
 requirements:
   - class: "DockerRequirement"
-    dockerPull: "somatic-sniper:1.0.5"
+    dockerImageId: "opengenomics/somatic-sniper:1.0.5"
 inputs:
   - id: "#reference"
     type: File
