@@ -4,6 +4,7 @@ baseCommand: ['python', '/opt/VarScanSomaticVcf.py']
 requirements:
   - class: "DockerRequirement"
     dockerImageId: "opengenomics/varscan:2.3.9"
+
 inputs:
   - id: "#normal_pileup"
     type: File
@@ -13,9 +14,7 @@ inputs:
   - id: "#tumor_pileup"
     type: File
     inputBinding:
-      prefix: --input_file:tumor
-      secondaryFiles:
-        - .bai
+      position: 1
   
   - id: "#min_coverage"
     type: int
@@ -74,17 +73,12 @@ inputs:
       
 outputs:
   
-  - id: "#call_stats"
+  - id: "#snp_vcf"
     type: File
     outputBinding:
-      glob:
-        engine: "cwl:JsonPointer"
-        script: job/out
-        
-  - id: "#mutations"
+      glob: varscan.somatic.snp.vcf
+
+  - id: "#indel_vcf"
     type: File
     outputBinding:
-      glob:
-        engine: "cwl:JsonPointer"
-        script: job/vcf
-        
+      glob: varscan.somatic.indel.vcf
