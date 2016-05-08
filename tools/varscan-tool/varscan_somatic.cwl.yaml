@@ -6,79 +6,88 @@ requirements:
     dockerImageId: "opengenomics/varscan:2.3.9"
 
 inputs:
-  - id: "#normal_pileup"
+  - id: "normal_pileup"
     type: File
     inputBinding:
       position: 1
       
-  - id: "#tumor_pileup"
+  - id: "tumor_pileup"
     type: File
     inputBinding:
-      position: 1
+      position: 2
   
-  - id: "#min_coverage"
+  - id: "min_coverage"
     type: int
+    default: 8
     inputBinding:
       prefix: --min-coverage
 
-  - id: "#min_coverage_normal"
+  - id: "min_coverage_normal"
     type: int
+    default: 8
     inputBinding:
       prefix: --min-coverage-normal
       
-  - id: "#min_coverage_tumor"
+  - id: "min_coverage_tumor"
     type: int
+    default: 6
     inputBinding:
       prefix: --min-coverage-tumor
       
-  - id: "#min_var_freq"
+  - id: "min_var_freq"
     type: float
+    default: 0.10
     inputBinding:
       prefix: --min-var-freq
 
-  - id: "#min_freq_for_hom"
-    type: int
+  - id: "min_freq_for_hom"
+    type: float
+    default: 0.75
     inputBinding:
       prefix: --min-freq-for-hom
       
-  - id: "#normal_purity"
-    type: int
+  - id: "normal_purity"
+    type: float
+    default: 1.00
     inputBinding:
       prefix: --normal-purity
 
-  - id: "#tumor_purity"
-    type: int
+  - id: "tumor_purity"
+    type: float
+    default: 1.00
     inputBinding:
       prefix: --tumor-purity
       
-  - id: "#p_value"
+  - id: "p_value"
     type: float
+    default: 0.99
     inputBinding:
       prefix: --p-value
       
-  - id: "#somatic_p_value"
+  - id: "somatic_p_value"
     type: float
+    default: 0.05
     inputBinding:
       prefix: --somatic-p-value
 
-  - id: "#strand_filter"
-    type: boolean
+  - id: "strand_filter"
+    type: ["null", "int"]
     inputBinding:
-      prefix: --min-coverage
+      prefix: --strand-filter
 
-  - id: "#validation"
-    type: boolean
+  - id: "validation"
+    type: ["null", "int"]
     inputBinding:
-      prefix: --min-coverage
+      prefix: --validation
       
 outputs:
-  
-  - id: "#snp_vcf"
+  - id: "snp_vcf"
     type: File
     outputBinding:
-      glob: varscan.somatic.snp.vcf
+      glob: somatic_output.snp.vcf
+        
+  - id: "indel_vcf"
+    type: File
+    outputBinding:
+      glob: somatic_output.indel.vcf
 
-  - id: "#indel_vcf"
-    type: File
-    outputBinding:
-      glob: varscan.somatic.indel.vcf
