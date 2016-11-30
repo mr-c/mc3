@@ -3,7 +3,7 @@
     somatic mutation caller for cancer genomics
   </description>
   <requirements>
-    <container type="docker">varscan:2.3.9</container>
+    <container type="docker">opengenomics/varscan:2.3.9</container>
   </requirements>
 
   <command interpreter="python">VarScanSomaticVcf.py
