@@ -1,3 +1,4 @@
+cwlVersion: v1.0
 class: CommandLineTool
 label: VarScan Somatic
 baseCommand: ['python', '/opt/VarScanSomaticVcf.py']
@@ -90,4 +91,3 @@ outputs:
     type: File
     outputBinding:
       glob: somatic_output.indel.vcf
-
