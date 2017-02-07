@@ -1,77 +1,77 @@
 class: CommandLineTool
 label: SomaticSniper
-baseCommand: [ /opt/SomaticSniper.py, -F, vcf, --workdir, ./ ]
+cwlVersion: v1.0
+baseCommand: [ python, /opt/SomaticSniper.py, -F, vcf, --workdir, ./ ]
 requirements:
   - class: "DockerRequirement"
     dockerImageId: "opengenomics/somatic-sniper:1.0.5"
 inputs:
-  - id: "#reference"
+  reference:
     type: File
     inputBinding:
       prefix: -f
-  - id: "#tumor_name"
+  tumor_name:
     type: string
     default: "TUMOR"
     inputBinding:
       prefix: -t
-  - id: "#normal_name"
+  normal_name:
     type: string
     default: "NORMAL"
     inputBinding:
       prefix: -n
-  - id: "#mapq"
+  mapq:
     type: int
     inputBinding:
       prefix: -q
     default: 0
-  - id: "#somaticq"
+  somaticq:
     type: int
     inputBinding:
       prefix: -Q
-    default: 15
-  - id: "#loh"
+    default: 40
+  loh:
     type: boolean
-    default: False
+    default: false
     inputBinding:
-      prefix: "-L"
-  - id: "#gor"
+      prefix: -L
+  gor:
     type: boolean
-    default: False
+    default: false
     inputBinding:
-      prefix: "-G"
-  - id: "#dis_priors"
+      prefix: -G
+  dis_priors:
     type: boolean
-    default: False
+    default: false
     inputBinding:
-      prefix: "-p"
-  - id: "#use_priorp"
+      prefix: -p
+  use_priorp:
     type: boolean
-    default: False
+    default: false
     inputBinding:
-      prefix: "-J"
-  - id: "prior_p"
+      prefix: -J
+  prior_p:
     type: float
     default: 0.01
     inputBinding:
-      prefix: "-s"
-  - id: "#tumor"
+      prefix: -s
+  tumor:
     type: File
     inputBinding:
       position: 1
-  - id: "#normal"
+  normal:
     type: File
     inputBinding:
       position: 2
-  - id: "#output_name"
+  output_name:
     type: string
     default: "mutations.vcf"
     inputBinding:
       position: 3
 
 outputs:
-  - id: "#mutations"
+  mutations:
     type: File
     outputBinding:
-      glob:
-        engine: "cwl:JsonPointer"
-        script: job/output_name
+      glob: mutations.vcf
+
