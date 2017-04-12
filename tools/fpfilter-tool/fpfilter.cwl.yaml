@@ -4,7 +4,7 @@ cwlVersion: v1.0
 baseCommand: [perl, /opt/fpfilter.pl, --output, fpfilter.vcf]
 requirements:
   - class: "DockerRequirement"
-    dockerImageId: "opengenomics/fpfilter:0.0.1"
+    dockerImageId: "opengenomics/fpfilter:latest"
 inputs:
   vcf-file:
     type: File
@@ -90,7 +90,7 @@ inputs:
       prefix: --output
   
 outputs:
-  output:
+  filtered_vcf:
     type: File
     outputBinding:
       glob: filtered.vcf
