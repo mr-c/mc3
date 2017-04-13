@@ -4,7 +4,7 @@ label: VarScan Somatic
 baseCommand: ['python', '/opt/VarScanSomaticVcf.py']
 requirements:
   - class: "DockerRequirement"
-    dockerImageId: "opengenomics/varscan:latest"
+    dockerPull: "opengenomics/varscan:latest"
 
 inputs:
   - id: "normal_pileup"
