@@ -85,9 +85,9 @@ outputs:
   - id: "snp_vcf"
     type: File
     outputBinding:
-      glob: somatic_output.snp.vcf
+      glob: varscan.snp.vcf
         
   - id: "indel_vcf"
     type: File
     outputBinding:
-      glob: somatic_output.indel.vcf
+      glob: varscan.indel.vcf
