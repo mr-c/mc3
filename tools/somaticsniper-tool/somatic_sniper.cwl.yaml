@@ -65,7 +65,7 @@ inputs:
       position: 2
   output_name:
     type: string
-    default: "mutations.vcf"
+    default: "somatic_sniper.vcf"
     inputBinding:
       position: 3
 
@@ -73,5 +73,4 @@ outputs:
   mutations:
     type: File
     outputBinding:
-      glob: mutations.vcf
-
+      glob: somatic_sniper.vcf
