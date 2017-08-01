@@ -1,10 +1,10 @@
 class: CommandLineTool
 label: fpfilter
 cwlVersion: v1.0
-baseCommand: [perl, /opt/fpfilter.pl, --output, fpfilter.vcf]
+baseCommand: ["perl", "/opt/fpfilter.pl"]
 requirements:
-  - class: "DockerRequirement"
-    dockerPull: "opengenomics/fpfilter:latest"
+  - class: DockerRequirement
+    dockerPull: opengenomics/fpfilter:latest
 inputs:
   vcf-file:
     type: File
