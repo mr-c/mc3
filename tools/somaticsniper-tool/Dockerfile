@@ -1,6 +1,17 @@
-FROM ubuntu
+FROM ubuntu:16.04
 
-RUN apt-get update && apt-get install -y wget build-essential git-core cmake zlib1g-dev libncurses-dev python python-dev python-pip
+RUN apt-get update && apt-get install -y \
+    wget \
+    build-essential \
+    git-core \
+    cmake \
+    zlib1g-dev \
+    libbz2-dev \
+    libncurses-dev \
+    python \
+    python-dev \
+    python-pip
+
 RUN	pip install pysam
 
 WORKDIR /opt
