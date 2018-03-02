@@ -150,5 +150,5 @@ if __name__ == "__main__":
     arg_dict = vars(args)
 
     execute(arg_dict)
-    reheader_vcf(arg_dict, 'temp_output_snp.vcf', 'varscan_snp.vcf')
-    reheader_vcf(arg_dict, 'temp_output_indel.vcf', 'varscan_indel.vcf')
+    reheader_vcf(arg_dict, 'temp_output.snp.vcf', 'varscan_snp.vcf')
+    reheader_vcf(arg_dict, 'temp_output.indel.vcf', 'varscan_indel.vcf')
