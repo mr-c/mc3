@@ -55,7 +55,7 @@ def create_cmdline(namespace_dict):
         "somatic",
         namespace_dict['normal_pileup'],
         namespace_dict['tumor_pileup'],
-        "temp_output",
+        os.path.join(os.getcwd(), "temp_output"),
         "--output-vcf 1",
         create_opts(namespace_dict)])
 
@@ -150,5 +150,5 @@ if __name__ == "__main__":
     arg_dict = vars(args)
 
     execute(arg_dict)
-    reheader_vcf(arg_dict, 'temp_output.snp.vcf', 'varscan_snp.vcf')
-    reheader_vcf(arg_dict, 'temp_output.indel.vcf', 'varscan_indel.vcf')
+    reheader_vcf(arg_dict, os.path.join(os.getcwd(), "temp_output.snp.vcf"), os.path.join(os.getcwd(), "varscan_snp.vcf"))
+    reheader_vcf(arg_dict, os.path.join(os.getcwd(), "temp_output.indel.vcf"), os.path.join(os.getcwd(), "varscan_indel.vcf"))
