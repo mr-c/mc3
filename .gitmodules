@@ -4,9 +4,6 @@
 [submodule "tools/mutect-tool"]
 	path = tools/mutect-tool
 	url = https://github.com/OpenGenomics/mutect-tool.git
-[submodule "tools/picard-tool"]
-	path = tools/picard-tool
-	url = https://github.com/OpenGenomics/picard-tool
 [submodule "tools/indellocator-tool"]
         path = tools/indelocator-tool
         url = https://github.com/OpenGenomics/indelocator-tool
