@@ -13,9 +13,6 @@
 [submodule "tools/pindel-tool"]
 	path = tools/pindel-tool
 	url = https://github.com/OpenGenomics/pindel-tool.git
-[submodule "tools/tcgavcf-tool"]
-	path = tools/tcgavcf-tool
-	url = https://github.com/OpenGenomics/tcgavcf-tool.git
 [submodule "tools/mutect-tool"]
 	path = tools/mutect-tool
 	url = https://github.com/OpenGenomics/mutect-tool.git
