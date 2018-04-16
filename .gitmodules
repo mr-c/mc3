@@ -10,9 +10,6 @@
 [submodule "tools/somaticsniper-tool"]
 	path = tools/somaticsniper-tool
 	url = https://github.com/OpenGenomics/somaticsniper-tool.git
-[submodule "tools/fpfilter-tool"]
-	path = tools/fpfilter-tool
-	url = https://github.com/OpenGenomics/fpfilter-tool.git
 [submodule "tools/varscan-tool"]
 	path = tools/varscan-tool
 	url = https://github.com/OpenGenomics/varscan-tool.git
@@ -40,6 +37,6 @@
 [submodule "tools/picard-tool"]
 	path = tools/picard-tool
 	url = https://github.com/OpenGenomics/picard-tool
-[submodule "tools/picard-tool"]
+[submodule "tools/indellocator-tool"]
         path = tools/indelocator-tool
         url = https://github.com/OpenGenomics/indelocator-tool
