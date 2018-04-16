@@ -7,9 +7,6 @@
 [submodule "tools/somaticsniper-tool"]
 	path = tools/somaticsniper-tool
 	url = https://github.com/OpenGenomics/somaticsniper-tool.git
-[submodule "tools/varscan-tool"]
-	path = tools/varscan-tool
-	url = https://github.com/OpenGenomics/varscan-tool.git
 [submodule "tools/samtools-pileup-tool"]
 	path = tools/samtools-pileup-tool
 	url = https://github.com/OpenGenomics/samtools-pileup-tool.git
