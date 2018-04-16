@@ -1,9 +1,6 @@
 [submodule "tools/gatk-cocleaning-tool"]
 	path = tools/gatk-cocleaning-tool
 	url = https://github.com/OpenGenomics/gatk-cocleaning-tool.git
-[submodule "tools/pindel-tool"]
-	path = tools/pindel-tool
-	url = https://github.com/OpenGenomics/pindel-tool.git
 [submodule "tools/mutect-tool"]
 	path = tools/mutect-tool
 	url = https://github.com/OpenGenomics/mutect-tool.git
