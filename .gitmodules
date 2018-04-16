@@ -1,6 +1,3 @@
 [submodule "tools/gatk-cocleaning-tool"]
 	path = tools/gatk-cocleaning-tool
 	url = https://github.com/OpenGenomics/gatk-cocleaning-tool.git
-[submodule "tools/indellocator-tool"]
-        path = tools/indelocator-tool
-        url = https://github.com/OpenGenomics/indelocator-tool
