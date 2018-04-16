@@ -13,9 +13,6 @@
 [submodule "tools/mutect-tool"]
 	path = tools/mutect-tool
 	url = https://github.com/OpenGenomics/mutect-tool.git
-[submodule "tools/samtools-tool"]
-	path = tools/samtools-tool
-	url = https://github.com/OpenGenomics/samtools-tool
 [submodule "tools/picard-tool"]
 	path = tools/picard-tool
 	url = https://github.com/OpenGenomics/picard-tool
