@@ -1,9 +1,6 @@
 [submodule "tools/gatk-cocleaning-tool"]
 	path = tools/gatk-cocleaning-tool
 	url = https://github.com/OpenGenomics/gatk-cocleaning-tool.git
-[submodule "tools/muse-tool"]
-	path = tools/muse-tool
-	url = https://github.com/OpenGenomics/muse-tool.git
 [submodule "tools/radia-tool"]
 	path = tools/radia-tool
 	url = https://github.com/OpenGenomics/radia-tool.git
